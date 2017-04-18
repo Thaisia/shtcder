@@ -1,6 +1,16 @@
 <h3>New Post</h3>
 
-<%= form_for :post do |f| %>
-  <p><%= f.text_field :title %></p>
-  <p><%= f.text_area :text %></p>
+<%= form_for :post, url: posts_path do |f| %>
+
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :text%>
+    <%= f.text_area :text %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
