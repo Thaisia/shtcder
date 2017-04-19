@@ -43,7 +43,7 @@
              <% if user_signed_in? %>
 
               <li>
-                 <div class="navbar-text">Hello, <%= current_user.email %></div>
+                 <div class="navbar-text">Hello, <%= current_user.username %></div>
               </li>
               <li>
                    <%= link_to 'Sign Out!', destroy_user_session_path, method: :delete %>
