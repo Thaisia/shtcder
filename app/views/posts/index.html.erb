@@ -13,7 +13,7 @@
     <% if p.user_id == 0  %>
       Anon |
     <% else %>
-      <%= p.user.username %> |
+      <%= link_to p.user.username, profile_path(p.user_id)%> |
     <% end %>
     <%= p.created_at.strftime("%Y-%m-%d")%> |
 

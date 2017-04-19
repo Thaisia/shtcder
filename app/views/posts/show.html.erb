@@ -18,15 +18,19 @@
   <hr />
 <% end%>
 
-<p>
-  <i>Send comment</i>
-</p>
+<% if user_signed_in? %>
+  <p>
+    <i>Send comment</i>
+  </p>
 
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <p>
-    <%= f.text_area :text, :class => "form-control", :rows => "3"  %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<%end%>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+    <p>
+      <%= f.text_area :text, :class => "form-control", :rows => "3"  %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <%end%>
+<% else %>
+  <b><%= link_to "Sign in", user_session_path %> or <%= link_to "register", new_user_registration_path %> to post comments</b>
+<% end %>
