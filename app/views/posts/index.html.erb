@@ -9,11 +9,11 @@
     <%= p.text %>
   </p>
   <p>
-
+    Author:
     <% if p.user_id == 0  %>
-      Author: Anon |
+      Anon |
     <% else %>
-      <% p.user.username %>
+      <%= p.user.username %> |
     <% end %>
     <%= p.created_at.strftime("%Y-%m-%d")%> |
 
