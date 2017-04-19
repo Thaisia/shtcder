@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!
 
   def index
     @posts = Post.all
@@ -24,6 +23,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    current_user == nil ? usr_id = 0 : usr_id = current_user.id
+    params.require(:post).permit(:title, :text).merge(user_id:  usr_id)
   end
 end

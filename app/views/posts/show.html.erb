@@ -1,20 +1,32 @@
 <h3><%= @post.title %></h3>
-<p>
-  <%= @post.text%>
-</p>
-<hr>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-<p>
-  <%= f.text_area :text, :class => "form-control", :rows => "5"  %>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-<%end%>
-
-<% @post.comments.each do |comm|%>
   <p>
-    <i><%= comm.text %></i>
+    <%= @post.text%>
+  </p>
+<hr>
+
+<p>
+  <b>Comments:</b>
+</p>
+
+<% @post.comments.each do |c|%>
+  <p>
+    <%= c.user.username %> said:
+  </p>
+  <p>
+    <i><%= c.text %></i>
   </p>
   <hr />
 <% end%>
+
+<p>
+  <i>Send comment</i>
+</p>
+
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <p>
+    <%= f.text_area :text, :class => "form-control", :rows => "3"  %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<%end%>

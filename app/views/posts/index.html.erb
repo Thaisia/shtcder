@@ -1,6 +1,20 @@
 <% @posts.each do |p| %>
-  <%= p.title%>
-  <br>
-  <%= p.text%>
-  <hr>
-<% end %>
+
+  <p>
+    <b><%= link_to p.title, post_path(p)%></b>
+  </p>
+
+
+  <p>
+    <%= p.text %>
+  </p>
+  <p>
+
+    Author: <%= p.user.username%> |
+    <%= p.created_at.strftime("%Y-%m-%d")%> |
+
+    <%= link_to "Comments: #{p.comments.length}", post_path(p)%>
+  </p>
+  <hr />
+
+<% end%>
