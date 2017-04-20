@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.where(public: true)
+    @posts = Post.where(public: true).order(created_at: :desc)
   end
 
   def show
