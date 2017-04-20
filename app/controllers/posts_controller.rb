@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @languages = Rails.configuration.languages
   end
 
   def create
