@@ -1,7 +1,11 @@
 <h3><%= @post.title %></h3>
-  <p>
-    <pre class="prettyprint"><%= @post.text%></pre>
-  </p>
+<p>
+  <% if @post.lang == 'Other'%>
+    <pre><code><%= @post.text %></code></pre>
+  <%else%>
+    <pre><code class="<%= @post.lang.downcase%>"><%= @post.text %></code></pre>
+  <%end%>
+</p>
 <hr>
 
 <p>

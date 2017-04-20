@@ -6,7 +6,11 @@
 
 
   <p>
-    <pre class="prettyprint"><%= p.text %></pre>
+    <% if p.lang == 'Other'%>
+      <pre><code><%= p.text %></code></pre>
+    <%else%>
+      <pre><code class="<%= p.lang.downcase%>"><%= p.text %></code></pre>
+    <%end%>
   </p>
   <p>
     Author:
