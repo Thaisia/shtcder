@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true
   validates :text, presence: true
-  
+
   has_many :comments
   belongs_to :user
 
@@ -12,6 +12,11 @@ class Post < ActiveRecord::Base
 
   def last_comment
     comments.last
+  end
+
+  def self.search(search)
+    where("title LIKE ?", "%#{search}%")
+    where("text LIKE ?", "%#{search}%")
   end
 
 end

@@ -34,6 +34,10 @@
            <ul class="nav navbar-nav">
              <li><%= link_to 'New Shtcd', new_post_path %></li>
              <li class="active"><%= link_to 'View All Shtcds', posts_path %></li>
+              <%= form_tag(posts_path, :class => "navbar-form navbar-left", :method => "get", id: "search-form") do %>
+                <%= text_field_tag :search, params[:search], :class => "form-control", placeholder: "Search" %>
+                <%= submit_tag "Search", :class => "btn btn-primary" %>
+              <% end %>
            </ul>
            <ul class="nav navbar-nav navbar-right">
              <li class="notice">
