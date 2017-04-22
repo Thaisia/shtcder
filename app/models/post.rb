@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   has_many :comments
   belongs_to :user
 
+  self.per_page = 10
+
   def subject
     title
   end
