@@ -1,5 +1,14 @@
 <h3><%= @post.title %></h3>
 <p>
+  Author:
+  <% if @post.user_id == 0  %>
+    Anon |
+  <% else %>
+    <%= link_to @post.user.username, profile_path(@post.user_id)%> |
+  <% end %>
+  Language: <%= @post.lang %>
+</p>
+<p>
 
   <input id="foo" value="www.blablabla.com<%= post_path %>">
   <button class="btn" data-clipboard-target="#foo">
@@ -7,7 +16,9 @@
   </button>
 </p>
 <p>
-  <% if @post.lang == 'Other'%>
+  <% if @post.lang == 'None' %>
+    <pre><code class="nohighlight"><%= @post.text %></code></pre>
+  <% elsif @post.lang == 'Other'%>
     <pre><code><%= @post.text %></code></pre>
   <%else%>
     <pre><code class="<%= @post.lang.downcase%>"><%= @post.text %></code></pre>

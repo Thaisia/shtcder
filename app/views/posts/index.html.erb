@@ -6,7 +6,9 @@
 
 
   <p>
-    <% if p.lang == 'Other'%>
+    <% if p.lang == 'None' %>
+      <pre><code class="nohighlight"><%= p.text %></code></pre>
+    <% elsif p.lang == 'Other'%>
       <pre><code><%= p.text %></code></pre>
     <%else%>
       <pre><code class="<%= p.lang.downcase%>"><%= p.text %></code></pre>
@@ -19,6 +21,7 @@
     <% else %>
       <%= link_to p.user.username, profile_path(p.user_id)%> |
     <% end %>
+    Language: <%= p.lang %> |
     <%= p.created_at.strftime("%Y-%m-%d")%> |
 
     <%= link_to "Comments: #{p.comments.length}", post_path(p)%>
