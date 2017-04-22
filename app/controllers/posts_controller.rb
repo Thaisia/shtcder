@@ -7,7 +7,11 @@ class PostsController < ApplicationController
     else
       @posts = Post.all.order('created_at DESC')
     end
-    @posts = @posts.paginate(:page => params[:page], :per_page => 10)
+    @posts = @posts.paginate(:page => params[:page], :per_page => 5)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

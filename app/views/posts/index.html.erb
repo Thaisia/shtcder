@@ -1,34 +1,7 @@
-<% @posts.each do |p| %>
+<div id="my-posts">
+  <%= render @posts %>
+</div>
 
-  <p>
-    <b><%= link_to p.title, post_path(p)%></b>
-  </p>
-
-
-  <p>
-    <% if p.lang == 'None' %>
-      <pre><code class="nohighlight"><%= p.text %></code></pre>
-    <% elsif p.lang == 'Other'%>
-      <pre><code><%= p.text %></code></pre>
-    <%else%>
-      <pre><code class="<%= p.lang.downcase%>"><%= p.text %></code></pre>
-    <%end%>
-  </p>
-  <p>
-    Author:
-    <% if p.user_id == 0  %>
-      Anon |
-    <% else %>
-      <%= link_to p.user.username, profile_path(p.user_id)%> |
-    <% end %>
-    Language: <%= p.lang %> |
-    <%= p.created_at.strftime("%Y-%m-%d")%> |
-
-    <%= link_to "Comments: #{p.comments.length}", post_path(p)%>
-  </p>
-  <hr />
-
-<% end%>
 <div id="infinite-scrolling">
   <%= will_paginate @posts %>
 </div>
