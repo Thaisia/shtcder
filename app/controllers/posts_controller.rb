@@ -1,4 +1,13 @@
 class PostsController < ApplicationController
+  before_action :post_owner, only: [:edit, :update, :destroy]
+
+  def post_owner
+    @post = Post.find(params[:id])
+    unless @post.user_id == current_user.id
+      flash[:notice] = 'Access denied as you are not owner of this Job'
+      redirect_to post_path
+    end
+  end
 
   def index
     @posts = Post.where(public: true).order(created_at: :desc)
@@ -51,7 +60,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect_to post
+    redirect_to posts_path
   end
 
   private
