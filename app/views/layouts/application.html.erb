@@ -38,7 +38,7 @@
              <li class="active"><%= link_to 'View All Shtcds', posts_path %></li>
               <%= form_tag(posts_path, :class => "navbar-form navbar-left", :method => "get", id: "search-form") do %>
                 <%= text_field_tag :search, params[:search], :class => "form-control", placeholder: "Search" %>
-                <%= submit_tag "Search", :class => "btn btn-primary" %>
+                <%= submit_tag "Search", :class => "btn btn-primary btn-sm" %>
               <% end %>
            </ul>
            <ul class="nav navbar-nav navbar-right">
@@ -66,12 +66,7 @@
        </div>
      </nav>
 
-    <div class="container">
-      <p class="notice"></p>
-      <p class="alert"></p>
-    </div>
-
-    <div class="container">
+    <div class="container sht-container">
       <%= yield %>
     </div>
   <script>
