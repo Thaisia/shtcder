@@ -9,13 +9,6 @@
   Language: <%= @post.lang %>
 </p>
 <p>
-
-  <input id="foo" value="www.blablabla.com<%= post_path %>">
-  <button class="btn" data-clipboard-target="#foo">
-    Copy to clipboard
-  </button>
-</p>
-<p>
   <% if @post.lang == 'None' %>
     <pre><code class="nohighlight"><%= @post.text %></code></pre>
   <% elsif @post.lang == 'Other'%>
